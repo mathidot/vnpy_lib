@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "--- 開始刪除所有一級子目錄中的 .git 文件夾 ---"
+echo "--- 開始刪除所有一級子目錄中的 .github 文件夾 ---"
 echo "警告：此操作不可逆，將永久刪除子儲存庫的 Git 歷史記錄。"
 read -p "您確定要繼續嗎？ (yes/no): " confirm
 
@@ -20,17 +20,17 @@ for dir in "$CURRENT_DIR"/*/; do
     dir_name=$(basename "$dir")
 
     # 檢查子目錄中是否存在 .git 文件夾
-    if [ -d "$dir/.git" ]; then
+    if [ -d "$dir/.github" ]; then
         echo "發現 '$dir_name' 包含 .git 文件夾，正在刪除..."
-        rm -rf "$dir/.git"
+        rm -rf "$dir/.github"
         if [ $? -eq 0 ]; then
-            echo "成功刪除 '$dir_name/.git'"
+            echo "成功刪除 '$dir_name/.github'"
         else
-            echo "錯誤：無法刪除 '$dir_name/.git'。請檢查權限。"
+            echo "錯誤：無法刪除 '$dir_name/.github'。請檢查權限。"
         fi
     else
-        echo "跳過 '$dir_name'：不包含 .git 文件夾。"
+        echo "跳過 '$dir_name'：不包含 .github 文件夾。"
     fi
 done
 
-echo "--- .git 文件夾刪除完成 ---"
+echo "--- .github 文件夾刪除完成 ---"
